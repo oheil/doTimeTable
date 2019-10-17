@@ -526,7 +526,7 @@ namespace doTimeTable
             try
             {
                 //httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0");
-                httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "");
+                httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "oheil/doTimeTable");
 
                 HttpResponseMessage response = await httpClient.GetAsync(new Uri(releasesURL));
                 response.EnsureSuccessStatusCode();
