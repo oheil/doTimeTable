@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="String1" xml:space="preserve">
+    <value>Timetable</value>
+  </data>
+  <data name="String10" xml:space="preserve">
+    <value>Project name</value>
+  </data>
+  <data name="String100" xml:space="preserve">
+    <value>The sum of all teachers hours per week (={0}) is less the sum of all needed hours in classes (={1})</value>
+  </data>
+  <data name="String101" xml:space="preserve">
+    <value>The maximum number of hours in subject {0} (={1}) is larger than the total maximum number of hours (={2})</value>
+  </data>
+  <data name="String102" xml:space="preserve">
+    <value>Teacher-to-Class</value>
+  </data>
+  <data name="String103" xml:space="preserve">
+    <value>Edit Teacher to Class assignment</value>
+  </data>
+  <data name="String104" xml:space="preserve">
+    <value>&lt;h3&gt;Edit preset assignment of teachers and subject to classes&lt;/h3&gt;</value>
+  </data>
+  <data name="String105" xml:space="preserve">
+    <value>&lt;p&gt;Here you can edit predefined assignments of teachers and their subjects to classes.&lt;/p&gt;</value>
+  </data>
+  <data name="String106" xml:space="preserve">
+    <value>&lt;br /&gt;Empty or the teacher who will teach this class in this subject</value>
+  </data>
+  <data name="String107" xml:space="preserve">
+    <value>&lt;br /&gt;Non editable fields or columns with gray background are teacher or subjects which are part of the saved data but not in the current teacher or subject list. These columns are not checked and not saved.</value>
+  </data>
+  <data name="String108" xml:space="preserve">
+    <value>No classes, teachers or subjects are defined, nothing to do here.</value>
+  </data>
+  <data name="String109" xml:space="preserve">
+    <value>Not enough teacher hours (={0]) for subject {1}. Needed {2} hours.</value>
+  </data>
+  <data name="String11" xml:space="preserve">
+    <value>No Projects available. First create a new project by adding a new name into an empty row.</value>
+  </data>
+  <data name="String110" xml:space="preserve">
+    <value>The sum of needed hours (={0}) for subject {1} and teacher {2} is larger than the maximum hours (={3}) for this teacher.</value>
+  </data>
+  <data name="String111" xml:space="preserve">
+    <value>Class-to-Subject</value>
+  </data>
+  <data name="String112" xml:space="preserve">
+    <value>Edit presets of classes and subjects to schedule</value>
+  </data>
+  <data name="String113" xml:space="preserve">
+    <value>&lt;h3&gt;Edit preset assignments of classes and subjects to each other and to schedule&lt;/h3&gt;</value>
+  </data>
+  <data name="String114" xml:space="preserve">
+    <value>&lt;p&gt;Here you can edit predefined assignments of classes and subjects to each other, i.e. the connected classes should have the given subject at the same time, and you can set the scheduled time of this subject for these connected classes or a single class.&lt;/p&gt;</value>
+  </data>
+  <data name="String115" xml:space="preserve">
+    <value>&lt;li&gt;&lt;b&gt;ConnectionID&lt;/b&gt;&lt;/li&gt;</value>
+  </data>
+  <data name="String116" xml:space="preserve">
+    <value>&lt;br /&gt;An arbitrary but unique ID, which must be repeated for every connected class.</value>
+  </data>
+  <data name="String117" xml:space="preserve">
+    <value>&lt;br /&gt;The subject of the connected classes; must be equal for every single ConnectionID</value>
+  </data>
+  <data name="String118" xml:space="preserve">
+    <value>&lt;li&gt;&lt;b&gt;Day&lt;/b&gt;&lt;/li&gt;</value>
+  </data>
+  <data name="String119" xml:space="preserve">
+    <value>&lt;br /&gt;The scheduled day for this connection; can be empty; must be equal for every single ConnectionID</value>
+  </data>
+  <data name="String12" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="String120" xml:space="preserve">
+    <value>&lt;li&gt;&lt;b&gt;Hour&lt;/b&gt;&lt;/li&gt;</value>
+  </data>
+  <data name="String121" xml:space="preserve">
+    <value>&lt;br /&gt;The scheduled hour for this connection; can be empty; must be equal for every single ConnectionID</value>
+  </data>
+  <data name="String122" xml:space="preserve">
+    <value>No classes or subjects are defined, nothing to do here.</value>
+  </data>
+  <data name="String123" xml:space="preserve">
+    <value>Example:</value>
+  </data>
+  <data name="String124" xml:space="preserve">
+    <value>Classes 1a and 1b will have Sports at the same time.</value>
+  </data>
+  <data name="String125" xml:space="preserve">
+    <value>Classes 2a and 2b will have Sports at Monday to the third and fourth hour.</value>
+  </data>
+  <data name="String126" xml:space="preserve">
+    <value>For each ConnectionID every class can only be called once.</value>
+  </data>
+  <data name="String127" xml:space="preserve">
+    <value>For each ConnectionID only one subject can be given.</value>
+  </data>
+  <data name="String128" xml:space="preserve">
+    <value>For each ConnectionID only one timepoint can be given. Day and hour must both be empty or both not empty.</value>
+  </data>
+  <data name="String129" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="String13" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="String130" xml:space="preserve">
+    <value>Calculate timetable</value>
+  </data>
+  <data name="String131" xml:space="preserve">
+    <value>Click Yes to abort the current calculation!</value>
+  </data>
+  <data name="String132" xml:space="preserve">
+    <value>Running Calculation</value>
+  </data>
+  <data name="String133" xml:space="preserve">
+    <value>Data has not been saved, see log window</value>
+  </data>
+  <data name="String134" xml:space="preserve">
+    <value>General calculation state:</value>
+  </data>
+  <data name="String135" xml:space="preserve">
+    <value>Current progress value in %:</value>
+  </data>
+  <data name="String136" xml:space="preserve">
+    <value>Calculation progress</value>
+  </data>
+  <data name="String137" xml:space="preserve">
+    <value>Not enough teacher hours to fill all courses</value>
+  </data>
+  <data name="String138" xml:space="preserve">
+    <value>The number of teacher hours is low for subject</value>
+  </data>
+  <data name="String139" xml:space="preserve">
+    <value>The following issues may lead to very long calculation time:</value>
+  </data>
+  <data name="String14" xml:space="preserve">
+    <value>My new project</value>
+  </data>
+  <data name="String140" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="String141" xml:space="preserve">
+    <value>Some kind of description</value>
+  </data>
+  <data name="String142" xml:space="preserve">
+    <value>Creation date</value>
+  </data>
+  <data name="String143" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="String144" xml:space="preserve">
+    <value>View timetables</value>
+  </data>
+  <data name="String145" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="String146" xml:space="preserve">
+    <value>Timetable</value>
+  </data>
+  <data name="String147" xml:space="preserve">
+    <value>Switch to teachers view</value>
+  </data>
+  <data name="String148" xml:space="preserve">
+    <value>Switch to classes view</value>
+  </data>
+  <data name="String149" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="String15" xml:space="preserve">
+    <value>A project needs a name</value>
+  </data>
+  <data name="String150" xml:space="preserve">
+    <value>Export to default app</value>
+  </data>
+  <data name="String151" xml:space="preserve">
+    <value>No suitable timetable could be found!</value>
+  </data>
+  <data name="String152" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
+  <data name="String153" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="String154" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="String155" xml:space="preserve">
+    <value>&lt;h3&gt;Change parameters&lt;/h3&gt;</value>
+  </data>
+  <data name="String156" xml:space="preserve">
+    <value>The following parameter can be changed:</value>
+  </data>
+  <data name="String157" xml:space="preserve">
+    <value>&lt;br /&gt;If teachers are attached to one or more specific classes, it can easily happen that a teachter is assigned to two classes at the same time.
+This is normally not allowed and a valid timetable can not be found.
+To deactivate this constraint this value can be set to non zero.</value>
+  </data>
+  <data name="String158" xml:space="preserve">
+    <value>&lt;br /&gt;The number of timetables to calculate. It is possible to calculate more than one timetable.
+Each timetable differs slightly. At least one timetable and maximal 10 will be calculated.</value>
+  </data>
+  <data name="String159" xml:space="preserve">
+    <value>No warnings.</value>
+  </data>
+  <data name="String16" xml:space="preserve">
+    <value>Delete selected projects?</value>
+  </data>
+  <data name="String160" xml:space="preserve">
+    <value>Random order</value>
+  </data>
+  <data name="String161" xml:space="preserve">
+    <value>Export anonymised</value>
+  </data>
+  <data name="String162" xml:space="preserve">
+    <value>Failed to export project.</value>
+  </data>
+  <data name="String163" xml:space="preserve">
+    <value>Import of project failed.</value>
+  </data>
+  <data name="String164" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="String165" xml:space="preserve">
+    <value>&lt;br /&gt;The minimum backtrace counts to reach, before a warning is printed.
+While the timetable is being filled deadends may be reached where no more allocations are possible.
+In this case a step back is performed, called backtrace, and another combination is tried.
+If a specific combination of class and subject triggers a large number of backtraces, it is a hint on an unresolvable constraint.
+Only values from 10^i for i=1,2,3,4,5,6,7 are used (10,100,1000,...).</value>
+  </data>
+  <data name="String166" xml:space="preserve">
+    <value>The following combination repeatedly results in unresolvable conflicts:</value>
+  </data>
+  <data name="String167" xml:space="preserve">
+    <value>&lt;br /&gt;The timetable is calculated for classes in order of the classes list.
+To change this to a random order of classes set this parameter to a value larger than 0.</value>
+  </data>
+  <data name="String168" xml:space="preserve">
+    <value>&lt;br /&gt;Set this parameter to a value not 0 to allocate courses in the order of teacher coverage. The course with lowest coverage at first.</value>
+  </data>
+  <data name="String169" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="String17" xml:space="preserve">
+    <value>Edit/Create</value>
+  </data>
+  <data name="String170" xml:space="preserve">
+    <value>Support, Questions and Discussion</value>
+  </data>
+  <data name="String171" xml:space="preserve">
+    <value>Acknowledgement</value>
+  </data>
+  <data name="String172" xml:space="preserve">
+    <value>You are using a free and unrestricted copy of doTimeTable</value>
+  </data>
+  <data name="String173" xml:space="preserve">
+    <value>doTimeTable is distributed under the GNU General Public License  (GPL)</value>
+  </data>
+  <data name="String174" xml:space="preserve">
+    <value>Please support the development of doTimeTable by purchasing a registration key</value>
+  </data>
+  <data name="String175" xml:space="preserve">
+    <value>Julia script file can not be verified, aborting application.</value>
+  </data>
+  <data name="String176" xml:space="preserve">
+    <value>Julia script file can not be verified.
+If you didn't change the file this may be a security thread.
+Choose Cancel to exit the application now.</value>
+  </data>
+  <data name="String177" xml:space="preserve">
+    <value>Security warning</value>
+  </data>
+  <data name="String178" xml:space="preserve">
+    <value>Registration ID</value>
+  </data>
+  <data name="String179" xml:space="preserve">
+    <value>Download new version</value>
+  </data>
+  <data name="String18" xml:space="preserve">
+    <value>Subjects</value>
+  </data>
+  <data name="String180" xml:space="preserve">
+    <value>Install new version</value>
+  </data>
+  <data name="String181" xml:space="preserve">
+    <value>No new version available</value>
+  </data>
+  <data name="String182" xml:space="preserve">
+    <value>New version available</value>
+  </data>
+  <data name="String183" xml:space="preserve">
+    <value>Julia dll file can not be verified, aborting application.</value>
+  </data>
+  <data name="String184" xml:space="preserve">
+    <value>Julia dll file can not be verified.
+If you didn't change the file this may be a security thread.
+Choose Cancel to exit the application now.</value>
+  </data>
+  <data name="String185" xml:space="preserve">
+    <value>Copy log to clipboard?</value>
+  </data>
+  <data name="String19" xml:space="preserve">
+    <value>Select a single project</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="String20" xml:space="preserve">
+    <value>Discard and close</value>
+  </data>
+  <data name="String21" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="String22" xml:space="preserve">
+    <value>Save and close</value>
+  </data>
+  <data name="String23" xml:space="preserve">
+    <value>Edit subjects</value>
+  </data>
+  <data name="String24" xml:space="preserve">
+    <value>Subject name</value>
+  </data>
+  <data name="String25" xml:space="preserve">
+    <value>Max Classes for Subject at once</value>
+  </data>
+  <data name="String26" xml:space="preserve">
+    <value>Max hours per day</value>
+  </data>
+  <data name="String27" xml:space="preserve">
+    <value>Sports</value>
+  </data>
+  <data name="String28" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="String29" xml:space="preserve">
+    <value>&lt;h3&gt;Subject Definition&lt;/h3&gt;</value>
+  </data>
+  <data name="String3" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="String30" xml:space="preserve">
+    <value>&lt;p&gt;Here you define the subjects and their general time properties.&lt;/p&gt;</value>
+  </data>
+  <data name="String31" xml:space="preserve">
+    <value>&lt;p&gt;Description of the columns meaning:&lt;/p&gt;</value>
+  </data>
+  <data name="String32" xml:space="preserve">
+    <value>&lt;style type="text/css"&gt;p{padding:0;margin:0;}&lt;/style&gt;</value>
+  </data>
+  <data name="String33" xml:space="preserve">
+    <value>&lt;ul&gt;&lt;li&gt;&lt;b&gt;Subject name&lt;/b&gt;&lt;/li&gt;</value>
+  </data>
+  <data name="String34" xml:space="preserve">
+    <value>&lt;li&gt;&lt;b&gt;Max Classes for Subject at once&lt;/b&gt;&lt;/li&gt;</value>
+  </data>
+  <data name="String35" xml:space="preserve">
+    <value>&lt;li&gt;&lt;b&gt;Max hours per day&lt;/b&gt;&lt;/li&gt;</value>
+  </data>
+  <data name="String36" xml:space="preserve">
+    <value>Fill in example data</value>
+  </data>
+  <data name="String37" xml:space="preserve">
+    <value>Math</value>
+  </data>
+  <data name="String38" xml:space="preserve">
+    <value>&lt;br /&gt;The name of the subject, e.g. math, sports, ...</value>
+  </data>
+  <data name="String39" xml:space="preserve">
+    <value>&lt;br /&gt;Not more than N classes at the same time, e.g. for sports only 2 classes can use  the sports hall together.</value>
+  </data>
+  <data name="String4" xml:space="preserve">
+    <value>New project...</value>
+  </data>
+  <data name="String40" xml:space="preserve">
+    <value>&lt;br /&gt;Not more than N hours per day, e.g. math lessons should not be more than 2 hours a day for each class.</value>
+  </data>
+  <data name="String41" xml:space="preserve">
+    <value>Are you sure to close the window? Changes will be lost.</value>
+  </data>
+  <data name="String42" xml:space="preserve">
+    <value>Data has been changed.</value>
+  </data>
+  <data name="String43" xml:space="preserve">
+    <value>Allowed values are</value>
+  </data>
+  <data name="String44" xml:space="preserve">
+    <value>Values must be</value>
+  </data>
+  <data name="String45" xml:space="preserve">
+    <value>Column</value>
+  </data>
+  <data name="String46" xml:space="preserve">
+    <value>Row</value>
+  </data>
+  <data name="String47" xml:space="preserve">
+    <value>Edit classes</value>
+  </data>
+  <data name="String48" xml:space="preserve">
+    <value>Classes</value>
+  </data>
+  <data name="String49" xml:space="preserve">
+    <value>&lt;h3&gt;Class definition and subjects hours per week&lt;/h3&gt;</value>
+  </data>
+  <data name="String5" xml:space="preserve">
+    <value>Open project</value>
+  </data>
+  <data name="String50" xml:space="preserve">
+    <value>&lt;p&gt;Here you define the classes and how many hours of a subject they have per week.&lt;/p&gt;</value>
+  </data>
+  <data name="String51" xml:space="preserve">
+    <value>&lt;ul&gt;&lt;li&gt;&lt;b&gt;Class name&lt;/b&gt;&lt;/li&gt;</value>
+  </data>
+  <data name="String52" xml:space="preserve">
+    <value>&lt;br /&gt;The name of the class, e.g. 1a, 1b, 2a, ...</value>
+  </data>
+  <data name="String53" xml:space="preserve">
+    <value>&lt;li&gt;&lt;b&gt;The following columns are subject names&lt;/b&gt;&lt;/li&gt;</value>
+  </data>
+  <data name="String54" xml:space="preserve">
+    <value>&lt;br /&gt;The number of hours per week for each subject and class</value>
+  </data>
+  <data name="String55" xml:space="preserve">
+    <value>Class name</value>
+  </data>
+  <data name="String56" xml:space="preserve">
+    <value>&lt;br /&gt;Non editable columns with gray background are subjects which are part of the saved classes but not in the current subject list. These columns are not checked and not saved.</value>
+  </data>
+  <data name="String57" xml:space="preserve">
+    <value>The data in gray columns will not be saved!
+Should we proceed?</value>
+  </data>
+  <data name="String58" xml:space="preserve">
+    <value>This table is read only because another table is open for editing.</value>
+  </data>
+  <data name="String59" xml:space="preserve">
+    <value>Entries in this column must be positive integers or zero.</value>
+  </data>
+  <data name="String6" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="String60" xml:space="preserve">
+    <value>Days and Hours</value>
+  </data>
+  <data name="String61" xml:space="preserve">
+    <value>Edit days and hours</value>
+  </data>
+  <data name="String62" xml:space="preserve">
+    <value>Days</value>
+  </data>
+  <data name="String63" xml:space="preserve">
+    <value>Hours</value>
+  </data>
+  <data name="String64" xml:space="preserve">
+    <value>Monday</value>
+  </data>
+  <data name="String65" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
+  <data name="String66" xml:space="preserve">
+    <value>Wednesday</value>
+  </data>
+  <data name="String67" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
+  <data name="String68" xml:space="preserve">
+    <value>Friday</value>
+  </data>
+  <data name="String69" xml:space="preserve">
+    <value>Saturday</value>
+  </data>
+  <data name="String7" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="String70" xml:space="preserve">
+    <value>Sunday</value>
+  </data>
+  <data name="String71" xml:space="preserve">
+    <value>Integer</value>
+  </data>
+  <data name="String72" xml:space="preserve">
+    <value>Empty</value>
+  </data>
+  <data name="String73" xml:space="preserve">
+    <value>Zero</value>
+  </data>
+  <data name="String74" xml:space="preserve">
+    <value>Unique</value>
+  </data>
+  <data name="String75" xml:space="preserve">
+    <value>Positive</value>
+  </data>
+  <data name="String76" xml:space="preserve">
+    <value>Not zero</value>
+  </data>
+  <data name="String77" xml:space="preserve">
+    <value>&lt;h3&gt;Days and Hours Definition&lt;/h3&gt;</value>
+  </data>
+  <data name="String78" xml:space="preserve">
+    <value>&lt;p&gt;Define the base structure of the timetable.&lt;/p&gt;</value>
+  </data>
+  <data name="String79" xml:space="preserve">
+    <value>&lt;ul&gt;&lt;li&gt;&lt;b&gt;Days&lt;/b&gt;&lt;/li&gt;</value>
+  </data>
+  <data name="String8" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="String80" xml:space="preserve">
+    <value>&lt;br /&gt;The days where the hours are allocated on</value>
+  </data>
+  <data name="String81" xml:space="preserve">
+    <value>&lt;li&gt;&lt;b&gt;Hours&lt;/b&gt;&lt;/li&gt;</value>
+  </data>
+  <data name="String82" xml:space="preserve">
+    <value>&lt;br /&gt;The hours, which take place on every day</value>
+  </data>
+  <data name="String83" xml:space="preserve">
+    <value>&lt;/ul&gt;</value>
+  </data>
+  <data name="String84" xml:space="preserve">
+    <value>All days have the same numbers of hours.</value>
+  </data>
+  <data name="String85" xml:space="preserve">
+    <value>The data has not been checked successfully. Save anyways?</value>
+  </data>
+  <data name="String86" xml:space="preserve">
+    <value>Teacher</value>
+  </data>
+  <data name="String87" xml:space="preserve">
+    <value>Edit teacher</value>
+  </data>
+  <data name="String88" xml:space="preserve">
+    <value>Teachers name</value>
+  </data>
+  <data name="String89" xml:space="preserve">
+    <value>Max hours</value>
+  </data>
+  <data name="String9" xml:space="preserve">
+    <value>File {0} can not be opened</value>
+  </data>
+  <data name="String90" xml:space="preserve">
+    <value>&lt;h3&gt;Edit your teachers&lt;/h3&gt;</value>
+  </data>
+  <data name="String91" xml:space="preserve">
+    <value>&lt;p&gt;Here you edit all your teachers and how many hours per week they are teaching in total and for each subject.&lt;/p&gt;</value>
+  </data>
+  <data name="String92" xml:space="preserve">
+    <value>&lt;ul&gt;&lt;li&gt;&lt;b&gt;Teachers name&lt;/b&gt;&lt;/li&gt;</value>
+  </data>
+  <data name="String93" xml:space="preserve">
+    <value>&lt;br /&gt;The name of teacher</value>
+  </data>
+  <data name="String94" xml:space="preserve">
+    <value>&lt;li&gt;&lt;b&gt;Max hours&lt;/b&gt;&lt;/li&gt;</value>
+  </data>
+  <data name="String95" xml:space="preserve">
+    <value>&lt;br /&gt;The maximum number of hours per week</value>
+  </data>
+  <data name="String96" xml:space="preserve">
+    <value>&lt;br /&gt;The maximum number of hours per week for each subject. Zero or Empty if this teacher does not teach this subject.</value>
+  </data>
+  <data name="String97" xml:space="preserve">
+    <value>Class</value>
+  </data>
+  <data name="String98" xml:space="preserve">
+    <value>The sum of all subject hours (={0}) is larger than the available hours per week (={1})</value>
+  </data>
+  <data name="String99" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+</root>
