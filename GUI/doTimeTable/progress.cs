@@ -56,6 +56,7 @@ namespace doTimeTable
         private readonly Color textBox3BgColor;
         private bool warningTextOut = false;
         private bool calcFinished = false;
+        private Type currentType = Type.CALC;
 
         Form1.CalcRosterReadyCallbackDelegate currentCallback = null;
 
@@ -133,28 +134,36 @@ namespace doTimeTable
 
         public void SetProgress2(int value)
         {
-            textBox2.Text = LocRM.GetString("String135") + " " + value.ToString();
-            if( value > 100 )
+            if (currentType == Type.CALC)
+            {
+                textBox2.Text = LocRM.GetString("String135") + " " + value.ToString();
+            }
+            if (currentType == Type.DOWNLOAD)
+            {
+                textBox2.Text = LocRM.GetString("String188") + " " + value.ToString();
+            }
+
+            if ( value > 100 )
             {
                 value = 100;
             }
             progressBar2.Value = value;
         }
 
-        public delegate void InvokeDelegate_showText(string line);
-        public void ShowText_fromThread(Object[] values)
+        public delegate void InvokeDelegate_showWarningText(string line);
+        public void ShowWarningText_fromThread(Object[] values)
         {
             if (this.InvokeRequired)
             {
-                this.BeginInvoke(new InvokeDelegate_showText(ShowText), values);
+                this.BeginInvoke(new InvokeDelegate_showWarningText(ShowWarningText), values);
             }
             else
             {
                 string line = (string)values[0];
-                ShowText(line);
+                ShowWarningText(line);
             }
         }
-        public void ShowText(string line)
+        public void ShowWarningText(string line)
         {
             string newLine;
             int[] localTextIDs = new int[] { 137, 138, 151, 166 };
@@ -188,28 +197,77 @@ namespace doTimeTable
             warningTextOut = true;
         }
 
-        public void ActivateMe(Form1.CalcRosterReadyCallbackDelegate callback = null)
+        public delegate void InvokeDelegate_showText(string line);
+        public void ShowText_fromThread(Object[] values)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke(new InvokeDelegate_showText(ShowText), values);
+            }
+            else
+            {
+                string line = (string)values[0];
+                ShowText(line);
+            }
+        }
+        public void ShowText(string line)
+        {
+            textBox3.ForeColor = Color.Green;
+            textBox3.BackColor = textBox3BgColor;
+
+            textBox3.AppendText(line + Environment.NewLine);
+        }
+
+        public enum Type
+        {
+            CALC = 0,
+            DOWNLOAD,
+        }
+
+        public void ActivateMe(Type type = Type.CALC, Form1.CalcRosterReadyCallbackDelegate callback = null)
         {
             calcFinished = false;
             warningTextOut = false;
+            currentType = type;
 
             if (callback!= null)
             {
                 currentCallback = callback;
             }
 
-            this.Text = LocRM.GetString("String136");
+            if (currentType == Type.CALC)
+            {
+                this.Text = LocRM.GetString("String136");
+            }
+            if (currentType == Type.DOWNLOAD)
+            {
+                this.Text = LocRM.GetString("String179");
+            }
 
             splitContainer1.Enabled = false;
             splitContainer2.Enabled = false;
             splitContainer3.Enabled = false;
 
-            textBox1.Text = LocRM.GetString("String134");
+            if (currentType == Type.CALC)
+            {
+                textBox1.Text = LocRM.GetString("String134");
+            }
+            if (currentType == Type.DOWNLOAD)
+            {
+                textBox1.Text = LocRM.GetString("String187");
+            }
             textBox1.DeselectAll();
             textBox1.HideSelection = false;
             textBox1.Enabled = false;
 
-            textBox2.Text = LocRM.GetString("String135") + " " + "0";
+            if (currentType == Type.CALC)
+            {
+                textBox2.Text = LocRM.GetString("String135") + " " + "0";
+            }
+            if (currentType == Type.DOWNLOAD)
+            {
+                textBox2.Text = LocRM.GetString("String188") + " " + "0";
+            }
             textBox2.DeselectAll();
             textBox2.HideSelection = false;
             textBox2.Enabled = false;
@@ -223,7 +281,10 @@ namespace doTimeTable
             textBox3.BackColor = textBox3BgColor;
             textBox3.ScrollBars = ScrollBars.Vertical;
 
-            textBox3.AppendText(LocRM.GetString("String159") + Environment.NewLine);
+            if (currentType == Type.CALC)
+            {
+                textBox3.AppendText(LocRM.GetString("String159") + Environment.NewLine);
+            }
 
             HideCaret(textBox3.Handle);
 

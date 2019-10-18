@@ -937,6 +937,42 @@ namespace doTimeTable {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Download ähnelt.
+        /// </summary>
+        internal static string String186 {
+            get {
+                return ResourceManager.GetString("String186", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Download running ähnelt.
+        /// </summary>
+        internal static string String187 {
+            get {
+                return ResourceManager.GetString("String187", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current download in %: ähnelt.
+        /// </summary>
+        internal static string String188 {
+            get {
+                return ResourceManager.GetString("String188", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Verifying downloads ähnelt.
+        /// </summary>
+        internal static string String189 {
+            get {
+                return ResourceManager.GetString("String189", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Select a single project ähnelt.
         /// </summary>
         internal static string String19 {

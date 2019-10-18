@@ -563,14 +563,19 @@ namespace doTimeTable
 
         public void EnableInstallMenuItem()
         {
-            this.installNewVersionToolStripMenuItem.Visible = true;
-            this.installNewVersionToolStripMenuItem.Enabled = true;
-            if (CheckDownloadedNewVersion())
+            if (!this.installNewVersionToolStripMenuItem.Visible) {
+                this.installNewVersionToolStripMenuItem.Visible = true;
+            }
+            if (!this.installNewVersionToolStripMenuItem.Enabled)
             {
-                string log_output = "found verified installer";
-                logWindow.Write_to_log_fromThread(log_output);
-                this.installNewVersionToolStripMenuItem.Text = LocRM.GetString("String180");
-                newVersionDownloaded = true;
+                this.installNewVersionToolStripMenuItem.Enabled = true;
+                if (CheckDownloadedNewVersion())
+                {
+                    string log_output = "found verified installer";
+                    logWindow.Write_to_log_fromThread(log_output);
+                    this.installNewVersionToolStripMenuItem.Text = LocRM.GetString("String180");
+                    newVersionDownloaded = true;
+                }
             }
         }
 
@@ -2413,6 +2418,18 @@ namespace doTimeTable
             return r;
         }
 
+        private void SetDownloadProgress( int value )
+        {
+            Object[] values = { value };
+            Progress.currentProgress.SetProgress2_fromThread(values);
+        }
+
+        private void SetDownloadText(string text)
+        {
+            Object[] values = { text };
+            doTimeTable.Progress.currentProgress.ShowText_fromThread(values);
+        }
+
         private async void DownloadNewVersion()
         {
             string log_output;
@@ -2423,6 +2440,9 @@ namespace doTimeTable
                 {
                     if (httpClient != null)
                     {
+                        Progress.currentProgress.Show();
+                        Progress.currentProgress.ActivateMe(Progress.Type.DOWNLOAD);
+
                         string localNewVersion = "";
 #if DEBUG
                         Version lv = new Version(version);
@@ -2441,9 +2461,9 @@ namespace doTimeTable
                                 newVersion = crypto.newVersion;
                             }
 
-                            string installerName = "doTimeTableSetup.msi";
+                            //string installerName = "doTimeTableSetup.msi";
                             string newInstallerName = "doTimeTableSetup-" + newVersion + ".msi";
-                            string downloadURL = "https://raw.githubusercontent.com/oheil/doTimeTable/v" + newVersion + "/src/" + installerName;
+                            string downloadURL = "https://github.com/oheil/doTimeTable/releases/download/v" + newVersion + "/" + newInstallerName;
                             if (System.IO.File.Exists(downloadPath + Path.DirectorySeparatorChar + newInstallerName))
                             {
                                 try
@@ -2482,14 +2502,26 @@ namespace doTimeTable
                                 CheckDownloadedNewVersion();
                             }
 #endif
+                            SetDownloadProgress(10);
+                            SetDownloadText(LocRM.GetString("String186") + " " + newInstallerName);
+                            log_output = "Downloading " + newInstallerName;
+                            Form1.logWindow.Write_to_log(ref log_output);
                             if (!System.IO.File.Exists(downloadPath + Path.DirectorySeparatorChar + newInstallerName))
                             {
                                 try
                                 {
                                     HttpResponseMessage response = await httpClient.GetAsync(new Uri(downloadURL));
-                                    using (var fs = new FileStream(downloadPath + Path.DirectorySeparatorChar + newInstallerName, FileMode.Create))
+                                    if (response.IsSuccessStatusCode)
                                     {
-                                        await response.Content.CopyToAsync(fs);
+                                        using (var fs = new FileStream(downloadPath + Path.DirectorySeparatorChar + newInstallerName, FileMode.Create))
+                                        {
+                                            await response.Content.CopyToAsync(fs);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        log_output = "Download " + newInstallerName + " failed";
+                                        Form1.logWindow.Write_to_log(ref log_output);
                                     }
                                 }
                                 catch (Exception ex)
@@ -2498,14 +2530,26 @@ namespace doTimeTable
                                     Form1.logWindow.Write_to_log(ref log_output);
                                 }
                             }
+                            SetDownloadProgress(70);
+                            SetDownloadText(LocRM.GetString("String186") + " " + newInstallerName + ".sha256");
+                            log_output = "Downloading " + newInstallerName + ".sha256";
+                            Form1.logWindow.Write_to_log(ref log_output);
                             if (!System.IO.File.Exists(downloadPath + Path.DirectorySeparatorChar + newInstallerName + ".sha256"))
                             {
                                 try
                                 {
                                     HttpResponseMessage response = await httpClient.GetAsync(new Uri(downloadURL + ".sha256"));
-                                    using (var fs = new FileStream(downloadPath + Path.DirectorySeparatorChar + newInstallerName + ".sha256", FileMode.Create))
+                                    if (response.IsSuccessStatusCode)
                                     {
-                                        await response.Content.CopyToAsync(fs);
+                                        using (var fs = new FileStream(downloadPath + Path.DirectorySeparatorChar + newInstallerName + ".sha256", FileMode.Create))
+                                        {
+                                            await response.Content.CopyToAsync(fs);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        log_output = "Download " + newInstallerName + ".sha256" + " failed";
+                                        Form1.logWindow.Write_to_log(ref log_output);
                                     }
                                 }
                                 catch (Exception ex)
@@ -2514,6 +2558,10 @@ namespace doTimeTable
                                     Form1.logWindow.Write_to_log(ref log_output);
                                 }
                             }
+                            SetDownloadProgress(80);
+                            SetDownloadText(LocRM.GetString("String189"));
+                            log_output = "Verifying " + newInstallerName;
+                            Form1.logWindow.Write_to_log(ref log_output);
                             if (CheckDownloadedNewVersion() && System.IO.File.Exists(downloadPath + Path.DirectorySeparatorChar + newInstallerName))
                             {
                                 log_output = "downloaded and verified installer: " + downloadPath + Path.DirectorySeparatorChar + newInstallerName;
@@ -2526,12 +2574,15 @@ namespace doTimeTable
                                 log_output = "error: installer could not be downloaded or verified";
                                 Form1.logWindow.Write_to_log(ref log_output);
                             }
+                            SetDownloadProgress(100);
                         }
                         else
                         {
                             log_output = "error: new version unknown";
                             Form1.logWindow.Write_to_log(ref log_output);
                         }
+
+                        Progress.currentProgress.Julia_ready_fromThread();
                     }
                 }
                 else

@@ -1003,7 +1003,7 @@ namespace doTimeTable
                     julia.NativeMethods.Julia(Form1.juliaDir, Form1.juliaScriptDir, projectPath);
 
                     Progress.currentProgress.Show();
-                    Progress.currentProgress.ActivateMe(callback);
+                    Progress.currentProgress.ActivateMe(Progress.Type.CALC,callback);
 
                     Form1.myself.Enabled = false;
                     foreach (Form2 form2 in Form2.myInstantiations)

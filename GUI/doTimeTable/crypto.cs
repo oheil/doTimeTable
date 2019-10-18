@@ -68,7 +68,7 @@ namespace doTimeTable
 
         override public string ToString()
         {
-            return versionArray[0].ToString() + "." + versionArray[1].ToString();
+            return versionArray[0].ToString() + "." + versionArray[1].ToString() + "." + versionArray[2].ToString();
         }
 
         public int MajorDiff(Version a, Version b)
@@ -127,7 +127,7 @@ namespace doTimeTable
             if( registrationVersion != null)
             {
                 bool newFound = false;
-                Version baseVersion = new Version(registrationVersion);
+                Version baseVersion = new Version(Form1.version);
                 Version newVersion = new Version();
                 foreach (string release in Form1.myself.versionsList)
                 {

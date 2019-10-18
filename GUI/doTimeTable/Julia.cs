@@ -182,7 +182,7 @@ namespace julia
                                 {
                                     outString = streamline.Replace("###USERMSG###", "");
                                     Object[] values = { outString };
-                                    doTimeTable.Progress.currentProgress.ShowText_fromThread(values);
+                                    doTimeTable.Progress.currentProgress.ShowWarningText_fromThread(values);
                                 }
                                 else
                                 {

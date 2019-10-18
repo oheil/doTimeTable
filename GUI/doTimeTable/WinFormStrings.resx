@@ -417,6 +417,18 @@ Choose Cancel to exit the application now.</value>
   <data name="String185" xml:space="preserve">
     <value>Copy log to clipboard?</value>
   </data>
+  <data name="String186" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="String187" xml:space="preserve">
+    <value>Download running</value>
+  </data>
+  <data name="String188" xml:space="preserve">
+    <value>Current download in %:</value>
+  </data>
+  <data name="String189" xml:space="preserve">
+    <value>Verifying downloads</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>Select a single project</value>
   </data>

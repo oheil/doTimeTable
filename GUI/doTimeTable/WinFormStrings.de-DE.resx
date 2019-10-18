@@ -417,6 +417,18 @@ Wählen Sie Abbrechen um die Applikation zu beenden.</value>
   <data name="String185" xml:space="preserve">
     <value>Soll das Log in das Clipboard kopiert werden?</value>
   </data>
+  <data name="String186" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="String187" xml:space="preserve">
+    <value>Download läuft</value>
+  </data>
+  <data name="String188" xml:space="preserve">
+    <value>Laufender Download in %:</value>
+  </data>
+  <data name="String189" xml:space="preserve">
+    <value>Downloads verfizieren</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>Selektieren Sie ein einzelnes Projekt</value>
   </data>
