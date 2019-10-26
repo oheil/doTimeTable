@@ -594,7 +594,10 @@ namespace doTimeTable
 
         public void UpdateDataGridView()
         {
-            dataGridView1.Sort(dataGridView1.Columns[3], System.ComponentModel.ListSortDirection.Ascending);
+            if (dataGridView1.Columns.Count >= 3)
+            {
+                dataGridView1.Sort(dataGridView1.Columns[3], System.ComponentModel.ListSortDirection.Ascending);
+            }
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 SetStatusString(row);
