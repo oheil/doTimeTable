@@ -432,6 +432,18 @@ Choose Cancel to exit the application now.</value>
   <data name="String19" xml:space="preserve">
     <value>Select a single project</value>
   </data>
+  <data name="String190" xml:space="preserve">
+    <value>Import registration key</value>
+  </data>
+  <data name="String191" xml:space="preserve">
+    <value>The registration key is not valid</value>
+  </data>
+  <data name="String192" xml:space="preserve">
+    <value>Import of registration key failed</value>
+  </data>
+  <data name="String193" xml:space="preserve">
+    <value>Registration key is valid and installed</value>
+  </data>
   <data name="String2" xml:space="preserve">
     <value>File</value>
   </data>

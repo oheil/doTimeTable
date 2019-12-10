@@ -982,6 +982,42 @@ namespace doTimeTable {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Import registration key ähnelt.
+        /// </summary>
+        internal static string String190 {
+            get {
+                return ResourceManager.GetString("String190", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The registration key is not valid ähnelt.
+        /// </summary>
+        internal static string String191 {
+            get {
+                return ResourceManager.GetString("String191", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Import of registration key failed ähnelt.
+        /// </summary>
+        internal static string String192 {
+            get {
+                return ResourceManager.GetString("String192", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Registration key is valid and installed ähnelt.
+        /// </summary>
+        internal static string String193 {
+            get {
+                return ResourceManager.GetString("String193", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die File ähnelt.
         /// </summary>
         internal static string String2 {

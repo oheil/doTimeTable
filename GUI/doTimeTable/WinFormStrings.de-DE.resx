@@ -432,6 +432,18 @@ Wählen Sie Abbrechen um die Applikation zu beenden.</value>
   <data name="String19" xml:space="preserve">
     <value>Selektieren Sie ein einzelnes Projekt</value>
   </data>
+  <data name="String190" xml:space="preserve">
+    <value>Importiere Registrierungsschlüssel</value>
+  </data>
+  <data name="String191" xml:space="preserve">
+    <value>Der Registrierungsschlüssel ist ungültig</value>
+  </data>
+  <data name="String192" xml:space="preserve">
+    <value>Import des Registrierungsschlüssel ist fehlgeschlagen</value>
+  </data>
+  <data name="String193" xml:space="preserve">
+    <value>Der Registrierungsschlüssel ist gültig und wurde installiert</value>
+  </data>
   <data name="String2" xml:space="preserve">
     <value>Datei</value>
   </data>

@@ -334,7 +334,7 @@ namespace doTimeTable
             return fp;
         }
 
-        public bool CheckRegistration()
+        public bool CheckRegistration(string file = "")
         {
             registered = false;
 
@@ -348,6 +348,10 @@ namespace doTimeTable
             if (rsa != null)
             {
                 string registrationXML = Form1.applicationDir + Path.DirectorySeparatorChar + "registration.xml";
+                if (file.Length > 0)
+                {
+                    registrationXML = file;
+                }
                 if (File.Exists(registrationXML))
                 {
                     XmlDocument registration_xml = new XmlDocument();

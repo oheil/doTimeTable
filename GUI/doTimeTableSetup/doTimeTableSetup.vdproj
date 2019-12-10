@@ -7197,7 +7197,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:doTimeTable"
         "ProductCode" = "8:{5B314FC5-852D-44EC-AA9E-A6308D5A84E6}"
-        "PackageCode" = "8:{97560859-23D0-4CB9-A340-6EC8228E1A6B}"
+        "PackageCode" = "8:{0D30E994-1183-433C-9A94-5A1B7D4FDA43}"
         "UpgradeCode" = "8:{1DB3EDDD-1B65-4295-A7C7-93902CCDAFB8}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

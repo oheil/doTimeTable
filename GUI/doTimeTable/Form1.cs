@@ -251,6 +251,7 @@ namespace doTimeTable
             this.exportAnonToolStripMenuItem.Text = LocRM.GetString("String161");
             this.exportToolStripMenuItem.Text = LocRM.GetString("String149");
             this.aboutToolStripMenuItem.Text = LocRM.GetString("String169");
+            this.importRegistrationToolStripMenuItem.Text = LocRM.GetString("String190");
 
             this.installNewVersionToolStripMenuItem.Text = LocRM.GetString("String179");
             this.installNewVersionToolStripMenuItem.Visible = false;
@@ -2634,6 +2635,53 @@ namespace doTimeTable
                     Form1.logWindow.Write_to_log(ref log_output);
                     this.installNewVersionToolStripMenuItem.Text = LocRM.GetString("String179");
                     newVersionDownloaded = false;
+                }
+            }
+        }
+
+        private void ImportRegistrationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string log_output;
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "xml files (*.xml)|*.xml",
+                RestoreDirectory = true
+            };
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+                if( crypto.CheckRegistration(filePath) )
+                {
+                    string registrationXML = Form1.applicationDir + Path.DirectorySeparatorChar + "registration.xml";
+                    if( System.IO.File.Exists(registrationXML) ) {
+                        string now = DateTime.Now.ToString("yyyyMMddHHmmss");
+                        if (!System.IO.File.Exists(registrationXML + "." + now))
+                        {
+                            System.IO.File.Move(registrationXML, registrationXML + "." + now);
+                        }
+                    }
+                    try
+                    {
+                        System.IO.File.Copy(filePath, registrationXML, true);
+                        this.installNewVersionToolStripMenuItem.Visible = true;
+                        log_output = "import and installation of registration key <" + filePath + "> was successful";
+                        Form1.logWindow.Write_to_log(ref log_output);
+                        MessageBox.Show(LocRM.GetString("String193"), "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                    catch (Exception ex)
+                    {
+                        log_output = "error: import of registration key <" + filePath + "> failed";
+                        Form1.logWindow.Write_to_log(ref log_output);
+                        log_output = ex.ToString();
+                        Form1.logWindow.Write_to_log(ref log_output);
+                        MessageBox.Show(LocRM.GetString("String192"), "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                }
+                else
+                {
+                    log_output = "error: invalid registration key: " + filePath;
+                    Form1.logWindow.Write_to_log(ref log_output);
+                    MessageBox.Show(LocRM.GetString("String191"), "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
             }
         }
