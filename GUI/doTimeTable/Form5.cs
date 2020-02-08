@@ -88,7 +88,7 @@ namespace doTimeTable
             doc += "<p><a href=\"https://www.dotimetable.de/\">https://www.dotimetable.de/</a></p><br />";
             doc += "<br />";
             doc += "<p>" + LocRM.GetString("String170") + ":</p><br />";
-            doc += "<p><a href=\"https://github.com/\">https://github.com/</a></p><br />";
+            doc += "<p><a href=\"https://github.com/oheil/doTimeTable\">https://github.com/oheil/doTimeTable</a></p><br />";
             doc += "<br />";
             doc += "<p>" + LocRM.GetString("String173") + ".</p><br />";
             doc += "<p><a href=\"https://www.gnu.org/licenses/\">https://www.gnu.org/licenses/</a></p><br />";
