@@ -95,7 +95,8 @@ namespace doTimeTable
 
         static readonly HttpClient httpClient = new HttpClient();
         public List<string> versionsList = new List<string>();
-        private readonly Thread autoUpdate = null;
+        public int maxMajorVersion = -1;
+        private Thread autoUpdate = null;
         bool newVersionDownloaded = false;
 
         private readonly List<Form2> myForm2s = new List<Form2>();
@@ -497,69 +498,136 @@ namespace doTimeTable
 
             UpdateDataGridView();
 
-            bool auto_update_disabled = false;
-            if (config.config_xml.DocumentElement.GetElementsByTagName("disable_auto_update").Count == 0)
-            {
-                System.Xml.XmlElement disable_auto_update = config.config_xml.CreateElement("disable_auto_update");
-                disable_auto_update.InnerXml = "false";
-                System.Xml.XmlElement root = config.config_xml.DocumentElement;
-                root.AppendChild(disable_auto_update);
-                config.Save_config_file();
-            }
-            if (config.config_xml.DocumentElement["disable_auto_update"].InnerXml == "true")
-            {
-                auto_update_disabled = true;
-            }
-
-            if (crypto.registered && !auto_update_disabled)
-            {
-                autoUpdate = new Thread(new ThreadStart(AutoUpdateThread));
-                autoUpdate.Start();
-            }
-
+            RunAutoUpdateThread();
         }
 
+        public void RunAutoUpdateThread()
+        {
+            if (autoUpdate == null)
+            {
+                bool auto_update_disabled = false;
+                if (config.config_xml.DocumentElement.GetElementsByTagName("disable_auto_update").Count == 0)
+                {
+                    System.Xml.XmlElement disable_auto_update = config.config_xml.CreateElement("disable_auto_update");
+                    disable_auto_update.InnerXml = "false";
+                    System.Xml.XmlElement root = config.config_xml.DocumentElement;
+                    root.AppendChild(disable_auto_update);
+                    config.Save_config_file();
+                }
+                if (config.config_xml.DocumentElement["disable_auto_update"].InnerXml == "true")
+                {
+                    auto_update_disabled = true;
+                }
+
+                if (crypto.registered && !auto_update_disabled)
+                {
+                    autoUpdate = new Thread(new ThreadStart(AutoUpdateThread));
+                    autoUpdate.Start();
+                }
+            }
+        }
         private async void AutoUpdateThread()
         {
-            string log_output;
-            string releasesURL = "https://api.github.com/repos/oheil/doTimeTable/releases";
-            string responseBody;
-            try
-            {
-                //httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0");
-                httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "oheil/doTimeTable");
-
-                HttpResponseMessage response = await httpClient.GetAsync(new Uri(releasesURL));
-                response.EnsureSuccessStatusCode();
-
-                responseBody = await response.Content.ReadAsStringAsync();
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                dynamic result = js.DeserializeObject(responseBody);
-                foreach (dynamic obj in result)
-                {
-                    Dictionary<string, dynamic> dict = (Dictionary<string, dynamic>)obj;
-                    string version = dict["tag_name"];
-                    version = version.Replace("v", "");
-                    versionsList.Add(version);
-                }
-                crypto.GetNewVersion();
-                if (crypto.newVersionAvailable && crypto.newVersion != null)
-                {
-                    EnableInstallMenuItem_fromThread();
-                }
-            }
-            catch (HttpRequestException e)
-            {
-                log_output = "retreiving releases failed:";
-                logWindow.Write_to_log_fromThread(log_output);
-                log_output = e.ToString();
-                logWindow.Write_to_log_fromThread(log_output);
-                log_output = "releases URL: " + releasesURL;
-                logWindow.Write_to_log_fromThread(log_output);
-            }
 #if DEBUG
             EnableInstallMenuItem_fromThread();
 #endif
+            //string log_output;
+            string releasesURL = "https://api.github.com/repos/oheil/doTimeTable/releases";
+            string maxVersionURL = "https://www.dotimetable.de/dott-usage/check.php";
+            string responseBody;
+            bool stopChecks = false;
+            while (true && !stopChecks)
+            {
+                Thread.Sleep(1000 * 60 * 5); //sleep 5 minutes
+                //Thread.Sleep(1000 ); //sleep 5 minutes
+                Random rn = new Random((int)DateTime.Now.Ticks);
+                bool go = rn.Next(10)==5;
+                if (go)
+                {
+                    //log_output = "checking for updates";
+                    //logWindow.Write_to_log_fromThread(log_output);
+                    try
+                    {
+                        if (versionsList.Count == 0)
+                        {
+                            //httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0");
+                            httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "oheil/doTimeTable");
+                            HttpResponseMessage response;
+
+                            //get max major version for this fingerprint
+                            if (maxMajorVersion == -1 && crypto.registrationSHA256hash != null && crypto.fingerPrint != null) {
+                                maxVersionURL = maxVersionURL + "?key=" + crypto.registrationSHA256hash + "&fp=" + crypto.fingerPrint;
+                                response = await httpClient.GetAsync(new Uri(maxVersionURL));
+                                response.EnsureSuccessStatusCode();
+                                responseBody = await response.Content.ReadAsStringAsync();
+                                try
+                                {
+                                    maxMajorVersion = Convert.ToInt32(responseBody);
+                                    if (crypto.registrationVersion != null)
+                                    {
+                                        maxMajorVersion -= (new Version(Form1.version)).MajorDiff(new Version(crypto.registrationVersion));
+                                    }
+                                    else
+                                    {
+                                        maxMajorVersion = 0;
+                                    }
+
+                                }
+                                catch(Exception)
+                                {
+                                    maxMajorVersion = -1;
+                                }
+                            }
+
+                            if (maxMajorVersion >= 0)
+                            {
+                                //get list of new versions
+                                response = await httpClient.GetAsync(new Uri(releasesURL));
+                                response.EnsureSuccessStatusCode();
+
+                                responseBody = await response.Content.ReadAsStringAsync();
+                                JavaScriptSerializer js = new JavaScriptSerializer();
+                                dynamic result = js.DeserializeObject(responseBody);
+                                foreach (dynamic obj in result)
+                                {
+                                    Dictionary<string, dynamic> dict = (Dictionary<string, dynamic>)obj;
+                                    string version = dict["tag_name"];
+                                    version = version.Replace("v", "");
+                                    if ((new Version(maxMajorVersion.ToString())).MajorDiff(new Version(version)) >= 0)
+                                    {
+                                        versionsList.Add(version);
+                                    }
+                                }
+                                versionsList.Sort();
+                                versionsList.Reverse();
+
+                                crypto.GetNewVersion();
+                                if (crypto.newVersionAvailable && crypto.newVersion != null)
+                                {
+                                    EnableInstallMenuItem_fromThread();
+                                }
+
+                                stopChecks = true;
+                                if (splash != null)
+                                {
+                                    splash.MyClose_fromThread();
+                                    splash = null;
+                                }
+                            }
+                        }
+                        
+                    }
+                    catch (HttpRequestException )
+                    {
+                        //log_output = "retreiving releases failed:";
+                        //logWindow.Write_to_log_fromThread(log_output);
+                        //log_output = e.ToString();
+                        //logWindow.Write_to_log_fromThread(log_output);
+                        //log_output = "releases URL: " + releasesURL;
+                        //logWindow.Write_to_log_fromThread(log_output);
+                    }
+                }
+            }
         }
 
         public void EnableInstallMenuItem()
@@ -1108,6 +1176,11 @@ namespace doTimeTable
             {
                 e.Cancel = true;
                 return;
+            }
+
+            if (autoUpdate != null)
+            {
+                autoUpdate.Abort();
             }
 
             string log_output = "Waiting for julia serverPipe thread to close";
@@ -2667,6 +2740,19 @@ namespace doTimeTable
                         log_output = "import and installation of registration key <" + filePath + "> was successful";
                         Form1.logWindow.Write_to_log(ref log_output);
                         MessageBox.Show(LocRM.GetString("String193"), "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        if (splash != null)
+                        {
+                            splash.Close();
+                            splash.Dispose();
+                            splash = null;
+                        }
+                        crypto.GetHardwareFingerprint();
+                        if (crypto.fingerPrint != null)
+                        {
+                            log_output = "Your fingerprint is " + crypto.fingerPrint;
+                            logWindow.Write_to_log(ref log_output);
+                        }
+                        RunAutoUpdateThread();
                     }
                     catch (Exception ex)
                     {

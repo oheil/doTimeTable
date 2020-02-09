@@ -83,7 +83,7 @@ namespace doTimeTable
             doc += "</head><body>";
             doc += "<div class=\"all\">";
             doc += "<h1>doTimeTable</h1><br />";
-            doc += "<p>Version: " + Application.ProductVersion + "</p><br />";
+            doc += "<p>Version: " + Form1.version + "</p><br />";
             doc += "<p>Copyright 2019 Oliver Heil, heilbIT</p><br />";
             doc += "<p><a href=\"https://www.dotimetable.de/\">https://www.dotimetable.de/</a></p><br />";
             doc += "<br />";
@@ -101,10 +101,17 @@ namespace doTimeTable
                 doc += "<p>" + Form1.crypto.registrationGUID + "</p><br />";
                 if (Form1.crypto.newVersionAvailable && Form1.crypto.newVersion != null)
                 {
-                    doc += "<p>" + LocRM.GetString("String182") + ": " + Form1.crypto.newVersion + "</p><br />";
+                    doc += "<p style=\"color:'DarkSalmon';\">" + LocRM.GetString("String182") + ": " + Form1.crypto.newVersion + "</p><br />";
                 }
-                else
+                else if ( Form1.myself.maxMajorVersion == 0 )
                 {
+                    doc += "<p style=\"color:'DarkSalmon';\">" + LocRM.GetString("String194") + "</p><br />";
+                }
+                else {
+                    if (Form1.myself.maxMajorVersion > 0)
+                    {
+                        doc += "<p style=\"color:'DarkSalmon';\">" + LocRM.GetString("String195") + ": " + Form1.myself.maxMajorVersion + "</p><br />";
+                    }
                     doc += "<p>" + LocRM.GetString("String181") + "</p><br />";
                 }
                 doc += "<br />";
@@ -174,6 +181,20 @@ namespace doTimeTable
                     }
                 }
             }
+        }
+
+        public void MyClose_fromThread()
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke((Action)MyClose_fromThread);
+            }
+            else
+            {
+                Close();
+                this.Dispose();
+            }
+            return;
         }
 
         void HtmlDoc_Click(object sender, HtmlElementEventArgs e)

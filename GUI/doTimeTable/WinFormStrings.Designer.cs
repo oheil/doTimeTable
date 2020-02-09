@@ -1018,6 +1018,24 @@ namespace doTimeTable {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No major upgrades left for this registration ähnelt.
+        /// </summary>
+        internal static string String194 {
+            get {
+                return ResourceManager.GetString("String194", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Number of major upgrades left for this registration ähnelt.
+        /// </summary>
+        internal static string String195 {
+            get {
+                return ResourceManager.GetString("String195", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die File ähnelt.
         /// </summary>
         internal static string String2 {

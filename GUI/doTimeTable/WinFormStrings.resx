@@ -444,6 +444,12 @@ Choose Cancel to exit the application now.</value>
   <data name="String193" xml:space="preserve">
     <value>Registration key is valid and installed</value>
   </data>
+  <data name="String194" xml:space="preserve">
+    <value>No major upgrades left for this registration</value>
+  </data>
+  <data name="String195" xml:space="preserve">
+    <value>Number of major upgrades left for this registration</value>
+  </data>
   <data name="String2" xml:space="preserve">
     <value>File</value>
   </data>

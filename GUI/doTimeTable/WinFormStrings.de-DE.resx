@@ -444,6 +444,12 @@ Wählen Sie Abbrechen um die Applikation zu beenden.</value>
   <data name="String193" xml:space="preserve">
     <value>Der Registrierungsschlüssel ist gültig und wurde installiert</value>
   </data>
+  <data name="String194" xml:space="preserve">
+    <value>Für diese Registrierung sind keine Hauptversionsupgrades mehr verfügbar</value>
+  </data>
+  <data name="String195" xml:space="preserve">
+    <value>Anzahl verbleibender Hauptversionsupgrades für diese Registrierung</value>
+  </data>
   <data name="String2" xml:space="preserve">
     <value>Datei</value>
   </data>

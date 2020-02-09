@@ -71,9 +71,9 @@ namespace doTimeTable
             return versionArray[0].ToString() + "." + versionArray[1].ToString() + "." + versionArray[2].ToString();
         }
 
-        public int MajorDiff(Version a, Version b)
+        public int MajorDiff(Version b)
         {
-            return a.versionArray[0] - b.versionArray[0];
+            return this.versionArray[0] - b.versionArray[0];
         }
         
         public int Compare(int a, int b)
@@ -329,6 +329,8 @@ namespace doTimeTable
             fp = BitConverter.ToString(sha256hashByte);
             sha256.Dispose();
 
+            fp = fp.Replace("-", "");
+
             fingerPrint = fp;
 
             return fp;
@@ -377,13 +379,28 @@ namespace doTimeTable
                     {
                         signature = registration_xml.DocumentElement["signature"].InnerXml.ToString();
                     }
-                    
-                    UTF8Encoding ByteConverter = new UTF8Encoding();
-                    //string data = nameValue + guid + version;
-                    byte[] dataBytes = ByteConverter.GetBytes(sha256hash);
-                    byte[] sighash = FromHexString(signature);
 
-                    registered = rsa.VerifyData(dataBytes, new SHA256CryptoServiceProvider(), sighash);
+                    if (guid.Length > 0 && version.Length > 0)
+                    {
+                        SHA256 sha256 = SHA256.Create();
+                        UTF8Encoding ByteConverter = new UTF8Encoding();
+                        string guid_version = guid + "_" + version;
+                        byte[] byteData = ByteConverter.GetBytes(guid_version);
+                        byte[] sha256hashByte = sha256.ComputeHash(byteData);
+                        string checkSha256 = BitConverter.ToString(sha256hashByte);
+                        sha256.Dispose();
+
+                        checkSha256 = checkSha256.Replace("-", "");
+                        if (checkSha256 == sha256hash)
+                        {
+                            //UTF8Encoding ByteConverter = new UTF8Encoding();
+                            //string data = nameValue + guid + version;
+                            byte[] dataBytes = ByteConverter.GetBytes(sha256hash);
+                            byte[] sighash = FromHexString(signature);
+
+                            registered = rsa.VerifyData(dataBytes, new SHA256CryptoServiceProvider(), sighash);
+                        }
+                    }
                 }
             }
 
