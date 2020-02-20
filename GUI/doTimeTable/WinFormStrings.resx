@@ -450,6 +450,9 @@ Choose Cancel to exit the application now.</value>
   <data name="String195" xml:space="preserve">
     <value>Number of major upgrades left for this registration</value>
   </data>
+  <data name="String196" xml:space="preserve">
+    <value>Edit timetables</value>
+  </data>
   <data name="String2" xml:space="preserve">
     <value>File</value>
   </data>

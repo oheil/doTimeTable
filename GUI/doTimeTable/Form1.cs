@@ -253,6 +253,8 @@ namespace doTimeTable
             this.exportToolStripMenuItem.Text = LocRM.GetString("String149");
             this.aboutToolStripMenuItem.Text = LocRM.GetString("String169");
             this.importRegistrationToolStripMenuItem.Text = LocRM.GetString("String190");
+            this.editRosterToolStripMenuItem.Text = LocRM.GetString("String196");
+            this.editRosterToolStripMenuItem1.Text = LocRM.GetString("String196");
 
             this.installNewVersionToolStripMenuItem.Text = LocRM.GetString("String179");
             this.installNewVersionToolStripMenuItem.Visible = false;
@@ -1619,7 +1621,9 @@ namespace doTimeTable
                 runToolStripMenuItem,
                 findRosterToolStripMenuItem,
                 configurationToolStripMenuItem,
-                configurationToolStripMenuItem1
+                configurationToolStripMenuItem1,
+                editRosterToolStripMenuItem,
+                editRosterToolStripMenuItem1
             };
             int[] items2switch = null;
 
@@ -1642,26 +1646,29 @@ namespace doTimeTable
                     switch (lastChanged)
                     {
                         case SubformType.UNDEF:
-                            items2switch = new int[] { 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, };
+                            items2switch = new int[] { 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0 };
                             doubleClickSubformType = SubformType.DAYSHOURS;
                             break;
                         case SubformType.DAYSHOURS:
-                            items2switch = new int[] { 1, 1, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, };
+                            items2switch = new int[] { 1, 1, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0 };
                             doubleClickSubformType = SubformType.SUBJECT;
                             break;
                         case SubformType.SUBJECT:
                             doubleClickSubformType = SubformType.CLASSES;
-                            items2switch = new int[] { 1, 1, 1, 1, 2, 2, 0, 0, 0, 0, 1, 1, };
+                            items2switch = new int[] { 1, 1, 1, 1, 2, 2, 0, 0, 0, 0, 1, 1, 0, 0 };
                             break;
                         case SubformType.CLASSES:
-                            items2switch = new int[] { 1, 1, 1, 1, 1, 1, 2, 2, 0, 0, 1, 1, };
+                            items2switch = new int[] { 1, 1, 1, 1, 1, 1, 2, 2, 0, 0, 1, 1, 0, 0 };
                             doubleClickSubformType = SubformType.TEACHER;
                             break;
-                        case SubformType.TEACHER:
                         case SubformType.CALCULATE:
+                            items2switch = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1 };
+                            doubleClickSubformType = SubformType.UNDEF;
+                            break;
+                        case SubformType.TEACHER:
                         case SubformType.VIEW:
                         default:
-                            items2switch = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, };
+                            items2switch = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 0, 0 };
                             doubleClickSubformType = SubformType.UNDEF;
                             break;
                     }
@@ -1669,7 +1676,7 @@ namespace doTimeTable
                 if (selectedID == "")
                 {
                     doubleClickSubformType = SubformType.UNDEF;
-                    items2switch = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, };
+                    items2switch = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
                 }
                 else
                 {
@@ -1705,7 +1712,7 @@ namespace doTimeTable
             else
             {
                 doubleClickSubformType = SubformType.UNDEF;
-                items2switch = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, };
+                items2switch = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             }
 
             if (items2switch != null)

@@ -450,6 +450,9 @@ Wählen Sie Abbrechen um die Applikation zu beenden.</value>
   <data name="String195" xml:space="preserve">
     <value>Anzahl verbleibender Hauptversionsupgrades für diese Registrierung</value>
   </data>
+  <data name="String196" xml:space="preserve">
+    <value>Editiere Stundenpläne</value>
+  </data>
   <data name="String2" xml:space="preserve">
     <value>Datei</value>
   </data>

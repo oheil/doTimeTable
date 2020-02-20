@@ -1036,6 +1036,15 @@ namespace doTimeTable {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Edit timetables ähnelt.
+        /// </summary>
+        internal static string String196 {
+            get {
+                return ResourceManager.GetString("String196", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die File ähnelt.
         /// </summary>
         internal static string String2 {
