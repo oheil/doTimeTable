@@ -540,7 +540,7 @@ namespace doTimeTable
 #if DEBUG
             EnableInstallMenuItem_fromThread();
 #endif
-            string log_output;
+            //string log_output;
             string releasesURL = "https://api.github.com/repos/oheil/doTimeTable/releases";
 #if REGISTRATION_NEEDED
             string maxVersionURL = "https://www.dotimetable.de/dott-usage/check.php";
@@ -557,8 +557,8 @@ namespace doTimeTable
                 //Thread.Sleep(1000 ); //sleep 5 minutes
                 
                 int rnumber = rn.Next(10);
-                log_output = "random update gate is:" + rnumber.ToString();
-                logWindow.Write_to_log_fromThread(log_output);
+                //log_output = "random update gate is:" + rnumber.ToString();
+                //logWindow.Write_to_log_fromThread(log_output);
                 bool go = rnumber == 5;
                 if (go)
                 {

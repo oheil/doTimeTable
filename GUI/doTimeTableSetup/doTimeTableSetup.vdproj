@@ -1065,6 +1065,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_AC7A0B886F494EBD83E72BED0501EA5B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_AE02647319BF4B7BAF4F524D377C7CD0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -5242,6 +5248,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AC7A0B886F494EBD83E72BED0501EA5B"
+            {
+            "SourcePath" = "8:..\\doTimeTable\\logo.ico"
+            "TargetName" = "8:logo.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_924270163273483B91211FF8F21DE6DB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AE02647319BF4B7BAF4F524D377C7CD0"
             {
             "SourcePath" = "8:..\\..\\JLBIN\\Julia-1.1.0\\share\\julia\\base\\special\\exp.jl"
@@ -7364,7 +7390,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:doTimeTable"
         "ProductCode" = "8:{FD1E6B9B-DDBE-4227-84CD-AF8C45709BFB}"
-        "PackageCode" = "8:{2F6EE4CB-E205-410C-B569-B7682C25FC60}"
+        "PackageCode" = "8:{DC71E16E-28C5-4329-8090-4472009F8511}"
         "UpgradeCode" = "8:{1DB3EDDD-1B65-4295-A7C7-93902CCDAFB8}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -7495,7 +7521,7 @@
             "Target" = "8:_F26C5B95C2F64B2183B1D6225F2D4B30"
             "Folder" = "8:_1895836B51E7429E85EAE04C32F11E7F"
             "WorkingFolder" = "8:_924270163273483B91211FF8F21DE6DB"
-            "Icon" = "8:"
+            "Icon" = "8:_AC7A0B886F494EBD83E72BED0501EA5B"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_AC53A78564A74D93869AA21684511AD9"
@@ -7509,7 +7535,7 @@
             "Target" = "8:_F26C5B95C2F64B2183B1D6225F2D4B30"
             "Folder" = "8:_31D1C57A01EA463BA0C7CF67A5901F04"
             "WorkingFolder" = "8:_924270163273483B91211FF8F21DE6DB"
-            "Icon" = "8:"
+            "Icon" = "8:_AC7A0B886F494EBD83E72BED0501EA5B"
             "Feature" = "8:"
             }
         }
@@ -7969,7 +7995,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F26C5B95C2F64B2183B1D6225F2D4B30"
             {
-            "SourcePath" = "8:..\\doTimeTable\\obj\\Release\\doTimeTable.exe"
+            "SourcePath" = "8:..\\doTimeTable\\obj\\x64\\Release\\doTimeTable.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_924270163273483B91211FF8F21DE6DB"

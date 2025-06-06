@@ -478,8 +478,8 @@ namespace doTimeTable
                     //if (!publicKeyFoundWritten)
                     //{
                     //publicKeyFoundWritten = true;
-                    //log_output = "info: public key file found:" + key_file_path + key_file_name;
-                    //Form1.logWindow.Write_to_log(ref log_output);
+                    log_output = "info: public key file found:" + key_file_path + key_file_name;
+                    Form1.logWindow.Write_to_log(ref log_output);
                     //}
 
                     Stream inStream = File.OpenRead(key_file_path + key_file_name);
