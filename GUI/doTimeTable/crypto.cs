@@ -338,16 +338,16 @@ namespace doTimeTable
 
         public bool CheckRegistration(string file = "")
         {
-            registered = false;
+            registered = true;
 
             string log_output;
-            string guid = "";
-            string version = "";
-            string sha256hash = "";
-            string signature = "";
+            string guid = "No registration needed";
+            string version = "0.2.2.0";
+            string sha256hash = "NA";
+            string signature = "NA";
 
             ReadPublicKey();
-            if (rsa != null)
+            if (!registered && rsa != null)
             {
                 string registrationXML = Form1.applicationDir + Path.DirectorySeparatorChar + "registration.xml";
                 if (file.Length > 0)

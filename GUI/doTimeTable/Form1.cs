@@ -18,6 +18,10 @@ You should have received a copy of the GNU General Public License
 along with doTimeTable.  If not, see <https://www.gnu.org/licenses/>.
 
 *******************************************************************************/
+
+//#define REGISTRATION_NEEDED
+#undef REGISTRATION_NEEDED
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -93,6 +97,11 @@ namespace doTimeTable
 
         private readonly Dictionary<string, Form4> openViews = new Dictionary<string, Form4>();
 
+        //static readonly HttpClientHandler httpClientHandler = new HttpClientHandler {
+        //    UseProxy = true,
+        //    UseDefaultCredentials = true
+        //};
+        //static readonly HttpClient httpClient = new HttpClient(httpClientHandler);
         static readonly HttpClient httpClient = new HttpClient();
         public List<string> versionsList = new List<string>();
         public int maxMajorVersion = -1;
@@ -531,17 +540,26 @@ namespace doTimeTable
 #if DEBUG
             EnableInstallMenuItem_fromThread();
 #endif
-            //string log_output;
+            string log_output;
             string releasesURL = "https://api.github.com/repos/oheil/doTimeTable/releases";
+#if REGISTRATION_NEEDED
             string maxVersionURL = "https://www.dotimetable.de/dott-usage/check.php";
+#endif
             string responseBody;
+            Random rn = new Random((int)DateTime.Now.Ticks);
             bool stopChecks = false;
             while (true && !stopChecks)
             {
+#if DEBUG
+#else
                 Thread.Sleep(1000 * 60 * 5); //sleep 5 minutes
+#endif
                 //Thread.Sleep(1000 ); //sleep 5 minutes
-                Random rn = new Random((int)DateTime.Now.Ticks);
-                bool go = rn.Next(10)==5;
+                
+                int rnumber = rn.Next(10);
+                log_output = "random update gate is:" + rnumber.ToString();
+                logWindow.Write_to_log_fromThread(log_output);
+                bool go = rnumber == 5;
                 if (go)
                 {
                     //log_output = "checking for updates";
@@ -553,7 +571,7 @@ namespace doTimeTable
                             //httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0");
                             httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "oheil/doTimeTable");
                             HttpResponseMessage response;
-
+#if REGISTRATION_NEEDED
                             //get max major version for this fingerprint
                             if (maxMajorVersion == -1 && crypto.registrationSHA256hash != null && crypto.fingerPrint != null) {
                                 maxVersionURL = maxVersionURL + "?key=" + crypto.registrationSHA256hash + "&fp=" + crypto.fingerPrint;
@@ -578,7 +596,9 @@ namespace doTimeTable
                                     maxMajorVersion = -1;
                                 }
                             }
-
+#else
+                            maxMajorVersion = 100000;
+#endif
                             if (maxMajorVersion >= 0)
                             {
                                 //get list of new versions
@@ -2425,7 +2445,7 @@ namespace doTimeTable
                 if (localNewVersion.Length > 0 || crypto.newVersion != null && crypto.newVersion.Length > 0)
                 {
                     string newVersion;
-                    if (crypto.newVersion == null || crypto.newVersion.Length == 0)
+                   if (crypto.newVersion == null || crypto.newVersion.Length == 0)
                     {
                         newVersion = localNewVersion;
                     }
